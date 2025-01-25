@@ -31,20 +31,19 @@ de backend y proporcionar una solución escalable y confiable para aplicaciones 
 - La configuración de HAproxy tiene como IP configurada mi IP, para que funcione correctamente debe cambiarla y asegurarse de que los puertos que se exponen no están ocupados por otros servicios, de lo contrario los contenedores no se levenatarán.
 
 
-## Estructura del proyecto
-
+## Estructura del Proyecto
 
 .
-├── docker-compose.yml                    # Archivo de configuración para todos los servicios
+├── docker-compose.yml                  # Archivo de configuración para todos los servicios
 ├── haproxy/
-   ├── docker.compose.yml                # Imagen personalizada para HAProxy
-   └── haproxy.cfg                       # Configuración de HAProxy
-   └── Dockerfile.apache                 # Imagen personalizada para Apache
-   └── Dockerfile.haproxy                # Imagen personalizada de HAproxy
-   └── espera-mysql.sh                   # script simple para establecer contacto con la base de datos
-   └── init.sql                          # Creacion de la tabla usuarios para la base de datos
-   └── html/
-        └── index.html                   # Archivos de la aplicación web (PHP y HTML)
-        └── insertar-usuarios.php
-        └── info.php                     
+│   ├── docker-compose.yml              # Imagen personalizada para HAProxy
+│   ├── haproxy.cfg                     # Configuración de HAProxy
+│   ├── Dockerfile.apache               # Imagen personalizada para Apache
+│   ├── Dockerfile.haproxy              # Imagen personalizada para HAProxy
+│   ├── espera-mysql.sh                 # Script para establecer contacto con la base de datos
+│   ├── init.sql                        # Creación de la tabla de usuarios en la base de datos
+│   └── html/
+│       ├── index.html                  # Archivo principal de la aplicación web (PHP y HTML)
+│       ├── insertar-usuarios.php       # Página para insertar usuarios en la base de datos
+│       └── info.php                    # Página con información adicional sobre la aplicación
 
