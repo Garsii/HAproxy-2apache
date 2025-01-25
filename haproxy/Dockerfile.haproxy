@@ -1,0 +1,22 @@
+# Usa la imagen oficial de HAProxy como base
+FROM haproxy:latest
+
+# Cambiar a usuario root para instalar herramientas
+USER root
+
+# Actualizar repositorios e instalar herramientas útiles
+RUN apt update && apt install -y \
+    iproute2 \
+    nano \
+    sudo \
+    curl \
+    wget \
+    net-tools \
+    iputils-ping \
+    dnsutils \
+    less \
+    vim \
+    && apt clean && rm -rf /var/lib/apt/lists/*
+
+# Cambiar nuevamente al usuario haproxy
+USER haproxy

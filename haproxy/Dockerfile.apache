@@ -1,0 +1,42 @@
+# Usa la imagen oficial de PHP con Apache como base
+FROM php:8.3-apache
+
+# Cambiar a usuario root para instalar herramientas
+USER root
+
+# Instalar herramientas útiles
+RUN apt-get update && apt-get install -y \
+    iproute2 \
+    nano \
+    sudo \
+    curl \
+    wget \
+    net-tools \
+    iputils-ping \
+    dnsutils \
+    vim \
+    lsb-release \
+    software-properties-common \
+    && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd mysqli pdo pdo_mysql \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Establecer el ServerName globalmente directamente en el archivo de configuración de Apache
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
+# Asegurarse de que los permisos de logs estén bien configurados
+RUN chown -R www-data:www-data /var/www/html/ \
+    && chmod -R 755 /var/www/html/
+
+# Copiar el script de espera
+COPY espera-mysql.sh /usr/local/bin/espera-mysql.sh
+
+# Dar permisos de ejecución al script
+RUN chmod +x /usr/local/bin/espera-mysql.sh
+
+# Comando de inicio personalizado
+CMD bash -c "sleep 30 && /usr/local/bin/espera-mysql.sh && apache2-foreground"
+
+# Exponer el puerto 80
+EXPOSE 80
