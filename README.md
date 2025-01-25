@@ -26,6 +26,10 @@ de backend y proporcionar una solución escalable y confiable para aplicaciones 
 - Un editor de texto o IDE para modificar los archivos si es necesario.
 
 
+## Datos a tener en cuenta
+
+- La configuración de HAproxy tiene como IP configurada mi IP, para que funcione correctamente debe cambiarla y asegurarse de que los puertos que se exponen no están ocupados por otros servicios, de lo contrario los contenedores no se levenatarán.
+
 
 ## Estructura del proyecto
 
