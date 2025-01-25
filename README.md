@@ -31,8 +31,9 @@ de backend y proporcionar una solución escalable y confiable para aplicaciones 
 - La configuración de HAproxy tiene como IP configurada mi IP, para que funcione correctamente debe cambiarla y asegurarse de que los puertos que se exponen no están ocupados por otros servicios, de lo contrario los contenedores no se levenatarán.
 
 
-## Estructura del Proyecto
+## Estructura del proyecto
 
+```plaintext
 .
 ├── docker-compose.yml                  # Archivo de configuración para todos los servicios
 ├── haproxy/
@@ -46,4 +47,3 @@ de backend y proporcionar una solución escalable y confiable para aplicaciones 
 │       ├── index.html                  # Archivo principal de la aplicación web (PHP y HTML)
 │       ├── insertar-usuarios.php       # Página para insertar usuarios en la base de datos
 │       └── info.php                    # Página con información adicional sobre la aplicación
-
